@@ -1,11 +1,11 @@
 // ==UserScript==
 // @id             iitc-plugin-wetterbericht@dazz
-// @name           iitc: wetterbericht
-// @version        0.1.2
+// @name           IWB updater - gary
+// @version        0.1b
 // @namespace      https://github.com/breunigs/ingress-intel-total-conversion
-// @updateURL      https://github.com/dazz/iitc-plugins/raw/master/wetterbericht/wetterbericht.user.js
-// @downloadURL    https://github.com/dazz/iitc-plugins/raw/master/wetterbericht/wetterbericht.user.js
-// @description    wetterbericht
+// @updateURL      
+// @downloadURL    
+// @description    angepasstes plug-in für die IWB
 // @include        *://www.ingress.com/intel*
 // @match          *://www.ingress.com/intel*
 // ==/UserScript==
@@ -23,7 +23,8 @@ function wrapper() {
     window.plugin.wetterbericht.setupCallback();
   }
   window.plugin.wetterbericht.setupCallback = function() {
-      $('#toolbox').append('<a onclick="window.plugin.wetterbericht.show()">wetterbericht</a><a onclick="window.plugin.wetterbericht.showX()">XML</a><a onclick="window.plugin.wetterbericht.showLink()">LINK</a>')    
+      $('#toolbox').append('<a onclick="window.plugin.wetterbericht.show()">wetterbericht</a> ');
+     $('#chatcontrols').append('<a onclick="window.plugin.wetterbericht.showLink()"><img src="http://btod.net/IWB/logo.svg" height=24> IWB</a>');
       addHook('portalDataLoaded', window.plugin.wetterbericht.portalDataLoaded);
   }
 
@@ -117,15 +118,16 @@ function wrapper() {
     return day + "." + month + "." + year + ' ' + hours + ':' + minutes;
   };
 
+   // Baut Wetterbericht ////////////////////////////
   window.plugin.wetterbericht.show = function() {
-    
+
     var factions = {'RESISTANCE':'R','ALIENS':'E'};
-    var s = 'der wetterbericht für ' + window.plugin.wetterbericht.datetime() + '\n';
+    var s = 'Der Wetterbericht für ' + window.plugin.wetterbericht.datetime() + '\n';
     var forXml = 'id,portals,resist_portals,resist_level,resist_ap,entlight_portals,entlight_level,entlight_ap' + '\n'; // PDL,5,4,1.09,7k,0,0.00,0k
     $.each(window.plugin.wetterbericht.result, function(area, area_data) {
       var anzP = window.plugin.wetterberichtportals.city['berlin']()[area].portals.length;
       s += '[' + area + '|' + anzP + ']:';
-      forXml += area + ','+anzP; 
+      forXml += area + ','+anzP;
       $.each(area_data, function(faction, value) {
         //console.log(value);
         var numP  = Object.keys(value.portals).length;
@@ -135,34 +137,14 @@ function wrapper() {
         forXml += ',' + numP + ',' + level + ',' + maxAP + 'k'
       });
       s += '\n';
+      forXml += '\n';
     });
-    s += '\nlink zur erklärung: https://github.com/dazz/iitc-plugins/blob/master/wetterbericht';
+    s += '\nLink zur Erklärung: https://github.com/dazz/iitc-plugins/blob/master/wetterbericht';
     console.log(s);
-    console.log(forXml);
     alert(s);
-  };
-
-// Zeigt XML STRING AN ////////////////////////////
-      window.plugin.wetterbericht.showX = function() {
-    
-    var factions = {'RESISTANCE':'R','ALIENS':'E'};
-    var forXml = '';
-    $.each(window.plugin.wetterbericht.result, function(area, area_data) {
-      var anzP = window.plugin.wetterberichtportals.city['berlin']()[area].portals.length;
-      forXml += area + ','+anzP; 
-      $.each(area_data, function(faction, value) {
-        //console.log(value);
-        var numP  = Object.keys(value.portals).length;
-        var level = (numP>0) ? (value.sum/numP).toFixed(2) : '0.00';
-        var maxAP = (value.maxAP/1000).toFixed(0);
-        forXml += ',' + numP + ',' + level + ',' + maxAP + 'k'; 
-      });
-        forXml += ',' +  window.plugin.wetterbericht.datetime() + '\n';
-    });
-    console.log(forXml);
-    alert(forXml);
-  };
-   // Baut GET Url ////////////////////////////
+  };   
+      
+// Baut GET Url ////////////////////////////
       window.plugin.wetterbericht.showLink = function() {
     
     var factions = {'RESISTANCE':'R','ALIENS':'E'};
@@ -179,8 +161,9 @@ function wrapper() {
       });
         forXml += ',' +  window.plugin.wetterbericht.datetime() + '|';
     });
-    console.log(forXml);
-    alert(forXml);
+          window.open(forXml,"IWB", "resizable=no,scrollbars=yes,status=no,width=940" );
+      // window.location = "http://btod.net/IWB/xm.php?iitc=" + forXml;    
+        
   };
 
   var setup = window.plugin.wetterbericht.setup;
