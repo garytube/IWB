@@ -3,7 +3,7 @@
 // @name           IWB updater - gary
 // @version        0.1b
 // @namespace      https://github.com/breunigs/ingress-intel-total-conversion
-// @updateURL      https://github.com/garytube/IWB/blob/master/iwb-gary.jshttps://github.com/garytube/IWB/blob/master/iwb-gary.js
+// @updateURL      https://github.com/garytube/IWB/blob/master/iwb-gary.js
 // @downloadURL    https://github.com/garytube/IWB/blob/master/iwb-gary.js
 // @description    angepasstes plug-in fur die IWB
 // @include        *://www.ingress.com/intel*
