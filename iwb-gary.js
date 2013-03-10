@@ -1,11 +1,11 @@
 // ==UserScript==
-// @id             iitc-plugin-wetterbericht@dazz
+// @id             iitc-plugin-wetterbericht@dazz@gary
 // @name           IWB updater - gary
 // @version        0.1b
 // @namespace      https://github.com/breunigs/ingress-intel-total-conversion
-// @updateURL      
-// @downloadURL    
-// @description    angepasstes plug-in für die IWB
+// @updateURL      https://github.com/garytube/IWB/blob/master/iwb-gary.jshttps://github.com/garytube/IWB/blob/master/iwb-gary.js
+// @downloadURL    https://github.com/garytube/IWB/blob/master/iwb-gary.js
+// @description    angepasstes plug-in fur die IWB
 // @include        *://www.ingress.com/intel*
 // @match          *://www.ingress.com/intel*
 // ==/UserScript==
@@ -122,7 +122,7 @@ function wrapper() {
   window.plugin.wetterbericht.show = function() {
 
     var factions = {'RESISTANCE':'R','ALIENS':'E'};
-    var s = 'Der Wetterbericht für ' + window.plugin.wetterbericht.datetime() + '\n';
+    var s = 'Der Wetterbericht fï¿½r ' + window.plugin.wetterbericht.datetime() + '\n';
     var forXml = 'id,portals,resist_portals,resist_level,resist_ap,entlight_portals,entlight_level,entlight_ap' + '\n'; // PDL,5,4,1.09,7k,0,0.00,0k
     $.each(window.plugin.wetterbericht.result, function(area, area_data) {
       var anzP = window.plugin.wetterberichtportals.city['berlin']()[area].portals.length;
@@ -139,7 +139,7 @@ function wrapper() {
       s += '\n';
       forXml += '\n';
     });
-    s += '\nLink zur Erklärung: https://github.com/dazz/iitc-plugins/blob/master/wetterbericht';
+    s += '\nLink zur Erklï¿½rung: https://github.com/dazz/iitc-plugins/blob/master/wetterbericht';
     console.log(s);
     alert(s);
   };   
