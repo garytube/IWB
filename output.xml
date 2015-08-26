@@ -1,0 +1,26 @@
+<data>
+	<area>
+		<id>KOE</id>
+		<portals>234</portals>
+		<resist_portals>2</resist_portals>
+		<resist_level>23</resist_level>
+		<resist_ap>24</resist_ap>
+		<entlight_portals>2</entlight_portals>
+	</area>
+	<area>
+		<id>KOE</id>
+		<portals>234</portals>
+		<resist_portals>2</resist_portals>
+		<resist_level>23</resist_level>
+		<resist_ap>24</resist_ap>
+		<entlight_portals>2</entlight_portals>
+	</area>
+	<area>
+		<id>KOE</id>
+		<portals>234</portals>
+		<resist_portals>2</resist_portals>
+		<resist_level>23</resist_level>
+		<resist_ap>24</resist_ap>
+		<entlight_portals>2</entlight_portals>
+	</area>
+</data>

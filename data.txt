@@ -1,0 +1,4 @@
+id,portals,resist_portals,resist_level,resist_ap,entlight_portals,entlight_level,entlight_ap,datetime
+KOE,234,2,23,24,2
+KOE,234,2,23,24,2
+KOE,234,2,23,24,2
